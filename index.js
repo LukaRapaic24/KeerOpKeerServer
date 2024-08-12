@@ -1,3 +1,21 @@
+// const HttpsServer = require('https').createServer;
+// const fs = require("fs");
+// const WebSocket = require('ws');
+//
+// // Create an HTTPS server
+// const server = HttpsServer({
+//     cert: fs.readFileSync("certificate.pem"),
+//     key: fs.readFileSync("key.pem")
+// });
+//
+// // Create a WebSocket server on top of the HTTPS server
+// const wss = new WebSocket.Server({ server: server });
+//
+// // WebSocket connection event
+//
+// // Start the HTTPS server
+// server.listen(443, () => console.log('Listening on port 443'));
+
 const WebSocket = require("ws");
 
 
@@ -60,6 +78,8 @@ wss.on("connection", ws => {
         console.log("Client has disconnected!");
         queue.filter((el) => {return el !== ws})
     });
+
+    ws.send('Welcome to the WebSocket server!');
 });
 
 function handleCommand(ws, data) {
